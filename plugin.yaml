@@ -1,0 +1,36 @@
+name: stablelens
+version: 0.1.0
+manifest_version: 2
+api_version: 1
+description: Read-only Arc Network tools for Hermes — USDC and stablecoin balances, transactions, fees, tokens and blocks, built on Arc.
+author: erhnysr
+license: MIT
+homepage: https://github.com/erhnysr/stablelens
+tags: [arc, usdc, stablecoins, circle, blockchain, read-only]
+requires_hermes: ">=0.21.5"
+provides_tools:
+  - arc_network_status
+  - arc_balance
+  - arc_transaction
+  - arc_address
+  - arc_token
+  - arc_block
+provides_hooks: []
+config_schema:
+  network:
+    type: str
+    default: mainnet
+    choices: [mainnet, testnet]
+    description: Arc Network the tools read when a call does not name one.
+  mainnet_rpc_url:
+    type: secret
+    env: STABLELENS_MAINNET_RPC_URL
+    description: Optional private mainnet RPC endpoint (https; may contain your provider key), tried before the public ones.
+  testnet_rpc_url:
+    type: secret
+    env: STABLELENS_TESTNET_RPC_URL
+    description: Optional private testnet RPC endpoint (https; may contain your provider key), tried before the public ones.
+  timeout_seconds:
+    type: int
+    default: 10
+    description: Per-request timeout in seconds (1 to 30).

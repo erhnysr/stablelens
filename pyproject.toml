@@ -1,0 +1,12 @@
+[project]
+name = "stablelens"
+version = "0.1.0"
+description = "Read-only Arc Network tools for Hermes Agent"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = []
+
+[tool.pytest.ini_options]
+addopts = "-q --import-mode=importlib -p stablelens_pytest_root"
+pythonpath = ["tests"]
+testpaths = ["tests"]
